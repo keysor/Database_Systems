@@ -1,0 +1,10 @@
+select a.CUST_NAME, b.* FROM customer a, agents b WHERE a.AGENT_CODE = b.AGENT_CODE;
+select a.ORD_NUM, a.ORD_DATE, b.CUST_NAME, c.AGENT_NAME FROM orders a, customer b, agents c WHERE a.AGENT_CODE = c.AGENT_CODE AND a.CUST_CODE = b.CUST_CODE;
+select a.AGENT_NAME, b.CUST_NAME, c.ORD_DATE, c.ORD_AMOUNT FROM agents a, customer b, orders c WHERE b.CUST_COUNTRY = "Canada" AND b.CUST_CODE = c.CUST_CODE AND c.AGENT_CODE = a.AGENT_CODE;
+select a.CUST_NAME, b.ORD_NUM, b.ORD_AMOUNT FROM customer a, orders b WHERE a.CUST_CITY = "New York" AND b.CUST_CODE = a.CUST_CODE;
+select a.AGENT_NAME, b.CUST_NAME, c.ORD_NUM, c.ORD_NUM from agents a, customer b, orders c WHERE a.AGENT_CODE = c.AGENT_CODE AND c.CUST_CODE = b.CUST_CODE AND c.ORD_AMOUNT > 1500;
+select a.*, b.* FROM agents a, orders b WHERE b.AGENT_CODE = a.AGENT_CODE;
+select a.CUST_NAME, a.CUST_CODE, a.OUTSTANDING_AMT, b.AGENT_NAME from customer a, agents b WHERE a.OUTSTANDING_AMT >= 6000 AND a.AGENT_CODE = b.AGENT_CODE;
+select a.CUST_NAME, b.ORD_NUM, b.ORD_AMOUNT, b.ADVANCE_AMOUNT from customer a, orders b WHERE b.CUST_CODE = a.CUST_CODE AND (b.ORD_AMOUNT >= 2500 OR b.ADVANCE_AMOUNT < 300); 
+SELECT a.AGENT_NAME, a.WORKING_AREA, b.CUST_NAME, b.WORKING_AREA from agents a, customer b WHERE a.WORKING_AREA = b.WORKING_AREA;
+select a.CUST_NAME, b.AGENT_NAME, c.ORD_NUM from customer a, agents b, orders c WHERE a.AGENT_CODE = b.AGENT_CODE AND c.CUST_CODE = a.CUST_CODE AND (c.ORD_AMOUNT < 1000 OR a.OPENING_AMT > 8000);
